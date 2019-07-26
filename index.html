@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isCharPresent(userString, symbol) {
+        for (var i = 0; i < userString.length; i++) {
+          if (userString[i] == symbol) {
+            return true;
+          }
+        }
+        return false;
+      }
+      console.log(isCharPresent("Ruslan", "l"));
+
+      function charIndexOf(userString, symbol) {
+        for (var i = 0; i < userString.length; i++) {
+          if (userString[i] == symbol) {
+            return ++i;
+          }
+        }
+        return "-1";
+      }
+      console.log(charIndexOf("Oleg", "e"));
+
+      var user = {
+        name: "Vasiliy",
+        surname: "Pupkin",
+        age: 36,
+        male: "man",
+        married: true,
+        wife: {
+          name: "Lena",
+          surname: "Logkina",
+          age: 25,
+          male: "woman"
+        }
+      };
+
+      var userTwo = objectClone(user);
+
+      function objectClone(obj) {
+        var clone = {};
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            if (typeof obj[key] == "object") {
+              clone[key] = objectClone(obj[key]);
+            } else {
+              clone[key] = obj[key];
+            }
+          }
+        }
+        return clone;
+      }
+
+      userTwo.name = "Сережа";
+      userTwo.wife.name = "Юля";
+
+      console.log(user.wife);
+    </script>
+  </body>
+</html>
