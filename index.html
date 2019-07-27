@@ -49,23 +49,25 @@
 
       function objectClone(obj) {
         var clone = {};
+        var cloneDeep = {};
         for (var key in obj) {
-          if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === "object" && obj[key] !== null) {
-              var cloneDeep = {};
-              for (var key in obj) {
-                cloneDeep[key] = obj[key];
-              }
-            } else {
-              clone[key] = obj[key];
+          if (typeof obj[key] === "object" && obj[key] !== null) {
+            var objDeep = obj[key];
+            for (var keyDeep in objDeep) {
+              cloneDeep[keyDeep] = objDeep[keyDeep];
             }
+            clone[key] = cloneDeep;
+          } else {
+            clone[key] = obj[key];
           }
         }
-        return (clone = cloneDeep);
+        return clone;
       }
 
       userTwo.name = "Сережа";
       userTwo.wife.name = "Юля";
+
+      console.log(user);
 
       console.log(userTwo);
     </script>
