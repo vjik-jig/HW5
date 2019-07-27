@@ -35,6 +35,7 @@
         age: 36,
         male: "man",
         married: true,
+        child: null,
         wife: {
           name: "Lena",
           surname: "Logkina",
@@ -49,7 +50,7 @@
         var clone = {};
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === "object") {
+            if (typeof obj[key] === "object" && obj[key] !== null) {
               clone[key] = objectClone(obj[key]);
             } else {
               clone[key] = obj[key];
@@ -62,7 +63,7 @@
       userTwo.name = "Сережа";
       userTwo.wife.name = "Юля";
 
-      console.log(user.wife);
+      console.log(userTwo);
     </script>
   </body>
 </html>
