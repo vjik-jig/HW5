@@ -40,7 +40,8 @@
           name: "Lena",
           surname: "Logkina",
           age: 25,
-          male: "woman"
+          male: "woman",
+          child: null
         }
       };
 
@@ -51,13 +52,16 @@
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
             if (typeof obj[key] === "object" && obj[key] !== null) {
-              clone[key] = objectClone(obj[key]);
+              var cloneDeep = {};
+              for (var key in obj) {
+                cloneDeep[key] = obj[key];
+              }
             } else {
               clone[key] = obj[key];
             }
           }
         }
-        return clone;
+        return (clone = cloneDeep);
       }
 
       userTwo.name = "Сережа";
