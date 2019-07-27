@@ -10,7 +10,7 @@
     <script>
       function isCharPresent(userString, symbol) {
         for (var i = 0; i < userString.length; i++) {
-          if (userString[i] == symbol) {
+          if (userString[i] === symbol) {
             return true;
           }
         }
@@ -19,14 +19,15 @@
       console.log(isCharPresent("Ruslan", "l"));
 
       function charIndexOf(userString, symbol) {
+        var result = -1;
         for (var i = 0; i < userString.length; i++) {
-          if (userString[i] == symbol) {
-            return ++i;
+          if (userString[i] === symbol) {
+            return (result = ++i);
           }
         }
-        return "-1";
+        return result;
       }
-      console.log(charIndexOf("Oleg", "e"));
+      console.log(charIndexOf("Oleg", "a"));
 
       var user = {
         name: "Vasiliy",
@@ -48,7 +49,7 @@
         var clone = {};
         for (var key in obj) {
           if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] == "object") {
+            if (typeof obj[key] === "object") {
               clone[key] = objectClone(obj[key]);
             } else {
               clone[key] = obj[key];
